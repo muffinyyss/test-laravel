@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Mpdf\Mpdf;
+use PDF;
+use App\Models\Blog;
 
 class PdfController extends Controller
 {
@@ -69,4 +71,15 @@ class PdfController extends Controller
         // Output the PDF as a download
         return $mpdf->Output('document.pdf', 'I');
     }
+
+
+    public function getDataFromDatabase()
+    {
+        // ดึงข้อมูลจากฐานข้อมูลโดยใช้ Eloquent ORM
+        $data = Blog::all();
+
+        $pdf = PDF::loadView('blog', $data);
+        return $pdf->stream('invoice.pdf');
+    }
+
 }

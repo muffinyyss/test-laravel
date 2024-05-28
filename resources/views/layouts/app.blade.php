@@ -24,6 +24,23 @@
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
     <script src="https://cdn.ckeditor.com/ckeditor5/41.4.2/classic/ckeditor.js"></script>
 
+    {{-- <script>
+        document.getElementById('pdfForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // ป้องกันการ submit form โดยอัตโนมัติ
+    
+            // ทำการ submit form โดยใช้ method POST
+            fetch('{{ route('generate-pdf', $item->id) }}', {
+                method: 'POST',
+                body: new FormData(this)
+            }).then(response => {
+                // ทำสิ่งที่ต้องการเมื่อรับ response กลับ
+            }).catch(error => {
+                console.error('Error:', error);
+            });
+        });
+    </script> --}}
+    
+
 </head>
 <body>
     <div id="app">

@@ -3,7 +3,7 @@
     Blog ♡
 @endsection
 @section('content')
-    @if (count($blogs)>0)
+    @if ($blogs->count() > 0)
     <h2 class="text text-center py-2">Blog <3</h2>
     <table class="table table-hover table-bordered text text-center">
         <thead>
@@ -36,10 +36,17 @@
                     </td>
 
                     <td>
-                        {{-- <form id="pdf-form-{{$item->id}}" action="{{ route('download-pdf', ['id' => $item->id]) }}" method="GET"> --}}
+                        {{-- <form id="pdf-form-{{$item->id}}" action="{{ route('generate-pdf', ['id' => $item->id]) }}" method="POST"> --}}
                             {{-- @csrf --}}
-                            <button type="submit" class="btn btn-outline-primary"> <i class="bi bi-download"></i> </button>
+                           
+                            {{-- <a href="{{route('generate-pdf', $item->id)}}" class="btn btn-outline-primary"><i class="bi bi-download"></i></a> --}}
                         {{-- </form> --}}
+
+                        <form action="{{ route('pdfData', $item->id) }}" method="POST">
+                            @csrf <!-- ใส่ CSRF token ของ Laravel -->
+                            <button type="submit" class="btn btn-outline-primary"><i class="bi bi-download"></i></button>
+                        </form>
+                        
                         
                     </td>
                 </tr>

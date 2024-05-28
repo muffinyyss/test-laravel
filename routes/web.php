@@ -33,7 +33,12 @@ Route::prefix('author')->group(function () {
     Route::get('/pdfForm', [PdfController::class, 'showForm'])->name('pdf-form');
     Route::post('/generate-pdf', [PdfController::class, 'PdfForm'])->name('generate-pdf');
     
-    // Route::get('/blog/{id}/download-pdf', [BlogController::class,'downloadPDF'])->name('download-pdf');
+    Route::get('/blog/{id}/download-pdf', [PdfController::class,'PdfForm'])->name('download-pdf');
+
+
+    Route::post('/pdf/{id}', [PdfController::class, 'getDataFromDatabase'])->name('pdfData');
+    // Route::post('/pdf/{id}', [PdfController::class, 'PdfForm'])->name('pdfData');
+
 
     
     
