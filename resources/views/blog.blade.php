@@ -36,17 +36,9 @@
                     </td>
 
                     <td>
-                        {{-- <form id="pdf-form-{{$item->id}}" action="{{ route('generate-pdf', ['id' => $item->id]) }}" method="POST"> --}}
-                            {{-- @csrf --}}
-                           
-                            {{-- <a href="{{route('generate-pdf', $item->id)}}" class="btn btn-outline-primary"><i class="bi bi-download"></i></a> --}}
-                        {{-- </form> --}}
-
-                        <form action="{{ route('pdfData', $item->id) }}" method="POST">
-                            @csrf <!-- ใส่ CSRF token ของ Laravel -->
-                            <button type="submit" class="btn btn-outline-primary"><i class="bi bi-download"></i></button>
-                        </form>
-                        
+                        <a href="{{ route('gPDF', $item->id) }}" class="btn btn-outline-primary">
+                            <i class="bi bi-download"></i>
+                        </a>
                         
                     </td>
                 </tr>
