@@ -13,6 +13,7 @@
                 <th scope="col">แก้ไขบทความ</th>
                 <th scope="col">ลบบทความ</th>
                 <th scope="col">Download PDF</th>
+                <th scope="col">Download Word</th>
                 
             </tr>
         </thead>
@@ -34,12 +35,15 @@
                     <td>
                         <a href="{{route('delete', $item->id)}}" class="btn btn-danger" onclick="return confirm('คุณต้องการลบบทความ {{$item->title}} หรือไม่ ?')">ลบ</a>
                     </td>
-
                     <td>
-                        <a href="{{ route('gPDF', $item->id) }}" class="btn btn-outline-primary">
-                            <i class="bi bi-download"></i>
+                        <a href="{{ route('gPDF', $item->id) }}" class="btn btn-outline-danger">
+                            <i class="bi bi-file-earmark-pdf"></i>
                         </a>
-                        
+                    </td>
+                    <td>
+                        <a href="{{ route('exportWord', $item->id) }}" class="btn btn-outline-primary">
+                            <i class="bi bi-file-earmark-word"></i>
+                        </a>
                     </td>
                 </tr>
             @endforeach

@@ -3,10 +3,12 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\BlogController;
-use App\Models\Blog;
 use App\Http\Controllers\ReportController;
-use App\Models\Report;
 use App\Http\Controllers\PdfController;
+use App\Http\Controllers\ExportController;
+use App\Models\Blog;
+use App\Models\Report;
+
 
 //นักอ่าน
 Route::get('/', [BlogController::class,'index']);
@@ -23,28 +25,15 @@ Route::prefix('author')->group(function () {
     Route::get('/edit/{id}', [AdminController::class,'edit'])->name('edit');
     Route::post('/update/{id}', [AdminController::class,'update'])->name('update');  
     Route::get('/pdf', [ReportController::class, 'pdf']);
-    
-    // Route::get('/pdfForm', function () {
-    //     return view('invoice.pdfForm');
-    // });
-    
-    // Route::post('/generate-pdf', [PdfController::class, 'generatePdf'])->name('generate.pdf');
-    
     Route::get('/pdfForm', [PdfController::class, 'showForm'])->name('pdf-form');
     Route::post('/generate-pdf', [PdfController::class, 'PdfForm'])->name('generate-pdf');
-    
     Route::get('/blog/{id}/download-pdf', [PdfController::class,'PdfForm'])->name('download-pdf');
-
-
     Route::get('/generate-pdf/{id}', [PDFController::class, 'gPDF'])->name('gPDF');
+    Route::get('/export-word/{id}', [ExportController::class, 'exportWord'])->name('exportWord');
 
 
-    
-    
-    
     
 });
-
 
 
 Auth::routes();
